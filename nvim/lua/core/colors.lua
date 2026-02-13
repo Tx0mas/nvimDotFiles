@@ -61,10 +61,23 @@ end
 
 function black()
     vim.cmd.colorscheme("rose-pine")
+    require('rose-pine').setup({
+        transparent = false, -- Boolean: Sets the background to transparent
+        italics = {
+            comments = true, -- Boolean: Italicizes comments
+            keywords = false, -- Boolean: Italicizes keywords
+            functions = false, -- Boolean: Italicizes functions
+            strings = false, -- Boolean: Italicizes strings
+            variables = false, -- Boolean: Italicizes variables
+        },
+        overrides = {
+            Keyword = { fg = "#FFFFFF" },
+            Type = { fg = "#FFFFFF" },
+            Constant = { fg = "#f347ff" },
+        },
+        palette_overrides = {}
+    })
 
-    vim.api.nvim_set_hl(0, "Keyword",  { fg = "#FFFFFF" })
-    vim.api.nvim_set_hl(0, "Type",     { fg = "#FFFFFF" })
-    vim.api.nvim_set_hl(0, "Constant", { fg = "#f347ff" })
 
     local groups = {
         "Normal", "NormalFloat", "SignColumn",
@@ -402,6 +415,25 @@ end
 function tom6()
     vim.cmd.colorscheme("habamax")
 end
+
+function ty_0()
+    vim.cmd.colorscheme("gruber-darker")
+end
+
+function ty_5()
+    vim.cmd.colorscheme("gruvbox")
+
+    local transparent_groups = {
+        "Normal", "NormalNC", "EndOfBuffer",
+        "LineNr", "CursorLineNr", "SignColumn", "FoldColumn",
+        "NormalFloat", "FloatBorder",
+    }
+
+    for _, g in ipairs(transparent_groups) do
+        vim.api.nvim_set_hl(0, g, { bg = "none" })
+    end
+end
+
 --ACCESOS RAPIDOS--
 --ACCESOS RAPIDOS--
 --Main--
@@ -416,9 +448,11 @@ vim.api.nvim_create_user_command("Quiet", quiet, {})
 --Mains--
 --Main--
 --Ty--
-vim.api.nvim_create_user_command("Ty", ty_1, {})
-vim.api.nvim_create_user_command("Ty2", ty_2, {})
-vim.api.nvim_create_user_command("Ty3", ty_3, {})
+vim.api.nvim_create_user_command("Ty", ty_0, {})
+vim.api.nvim_create_user_command("Ty2", ty_1, {})
+vim.api.nvim_create_user_command("Ty3", ty_2, {})
+vim.api.nvim_create_user_command("Ty4", ty_3, {})
+vim.api.nvim_create_user_command("Ty5", ty_5, {})
 --Ty--
 --Tranparentes
 vim.api.nvim_create_user_command("Tp", transparent, {})

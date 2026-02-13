@@ -20,7 +20,7 @@ return
         vim.keymap.set("n", "<C-l>", function() harpoon:list():select(3) end, { desc = "Harpoon: Go to file 3" })
         vim.keymap.set("n", "<C-;>", function() harpoon:list():select(4) end, { desc = "Harpoon: Go to file 4" })
         vim.keymap.set("n", "<C-'>", function() harpoon:list():select(5) end, { desc = "Harpoon: Go to file 5" })
-        
+
         -- 4. Optional: Add keymaps to move through the list sequentially
         vim.keymap.set("n", "<leader>hp", function() harpoon:list():prev() end, { desc = "Harpoon: Previous file" })
         vim.keymap.set("n", "<leader>hn", function() harpoon:list():next() end, { desc = "Harpoon: Next file" })
