@@ -487,6 +487,40 @@ function ty_6()
     vim.api.nvim_set_hl(0, "StatusLineNC", { bg = mi_fondo, fg = "#717984" }) 
 end
 
+function transparent_2()
+    require('rose-pine').setup({
+        variant = 'auto', 
+        dark_variant = 'main',
+        bold_vert_split = false,
+        dim_nc_background = false,
+        disable_background = true, 
+        disable_float_background = true,
+        disable_italics = true, 
+    })
+
+    vim.cmd.colorscheme("rose-pine")
+
+    local groups_to_clean = {
+        "Comment", "Keyword", "Statement", "Conditional", 
+        "Repeat", "Label", "Operator", "Exception", 
+        "Type", "StorageClass", "Structure", "Typedef"
+    }
+
+    for _, group in ipairs(groups_to_clean) do
+        vim.api.nvim_set_hl(0, group, { italic = false })
+    end
+
+    local transparent_groups = {
+        "Normal", "NormalNC", "EndOfBuffer",
+        "LineNr", "CursorLineNr", "SignColumn", "FoldColumn",
+        "NormalFloat", "FloatBorder",
+    }
+
+    for _, g in ipairs(transparent_groups) do
+        vim.api.nvim_set_hl(0, g, { bg = "none" })
+    end
+end
+
 
 --ACCESOS RAPIDOS--
 --ACCESOS RAPIDOS--
@@ -523,6 +557,7 @@ vim.api.nvim_create_user_command("Ty6", ty_6, {})
 --Ty--
 --Tranparentes
 vim.api.nvim_create_user_command("Tp", transparent, {})
+vim.api.nvim_create_user_command("Tp2", transparent_2, {})
 vim.api.nvim_create_user_command("BTp", BlackTp , {})
 --Estos son los mejorsitos
 vim.api.nvim_create_user_command("Gr", gruber , {})
