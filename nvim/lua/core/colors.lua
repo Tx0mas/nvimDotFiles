@@ -434,9 +434,68 @@ function ty_5()
     end
 end
 
+
+function emperor()
+    vim.cmd.colorscheme("emperor")
+end
+
+function tom7()
+    vim.cmd.colorscheme("lunaperche")
+end
+
+
+function contrast_git()
+    vim.cmd('colorscheme github_dark_high_contrast') 
+
+    local mi_fondo = "#000000"
+    local blanco = "#ffffff"
+
+    local grupos_fondo = {
+        "Normal", "NormalNC", "EndOfBuffer",
+        "LineNr", "CursorLineNr", "SignColumn", "FoldColumn",
+        "NormalFloat", "FloatBorder",
+    }
+
+    for _, g in ipairs(grupos_fondo) do
+        vim.api.nvim_set_hl(0, g, { bg = mi_fondo })
+    end
+
+    vim.api.nvim_set_hl(0, "StatusLine", { bg = mi_fondo, fg = blanco })
+    
+    vim.api.nvim_set_hl(0, "StatusLineNC", { bg = mi_fondo, fg = "#717984" }) 
+end
+
+
+function ty_6()
+    vim.cmd('colorscheme github_dark_high_contrast') 
+
+    local mi_fondo = "#090714"
+    local blanco = "#ffffff"
+
+    local grupos_fondo = {
+        "Normal", "NormalNC", "EndOfBuffer",
+        "LineNr", "CursorLineNr", "SignColumn", "FoldColumn",
+        "NormalFloat", "FloatBorder",
+    }
+
+    for _, g in ipairs(grupos_fondo) do
+        vim.api.nvim_set_hl(0, g, { bg = mi_fondo })
+    end
+
+    vim.api.nvim_set_hl(0, "StatusLine", { bg = mi_fondo, fg = blanco })
+    
+    vim.api.nvim_set_hl(0, "StatusLineNC", { bg = mi_fondo, fg = "#717984" }) 
+end
+
+
 --ACCESOS RAPIDOS--
 --ACCESOS RAPIDOS--
---Main--
+-- nadie: el codigo de pirate software:
+--Main-- (INTENTA MANTENERLO EN 3 MAX NOMAS PORFAVOR TOMAS DEL FUTURO)
+vim.api.nvim_create_user_command("Main0", tom , {}) 
+vim.api.nvim_create_user_command("Main", contrast_git , {})
+vim.api.nvim_create_user_command("Main2", ty_6 , {})
+vim.api.nvim_create_user_command("Main3", tom5 , {})
 --Mains--
 vim.api.nvim_create_user_command("Tom", tom , {})
 vim.api.nvim_create_user_command("Tom2", transparent, {})
@@ -444,15 +503,23 @@ vim.api.nvim_create_user_command("Tom3", gruv, {})
 vim.api.nvim_create_user_command("Tom4", tom4 , {})
 vim.api.nvim_create_user_command("Tom5", tom5 , {})
 vim.api.nvim_create_user_command("Tom6", tom6 , {})
+vim.api.nvim_create_user_command("Tom7", tom7 , {})
 vim.api.nvim_create_user_command("Quiet", quiet, {})
 --Mains--
 --Main--
+--Contrast
+vim.api.nvim_create_user_command("Contrast", ty_6 , {})
+vim.api.nvim_create_user_command("Contrast2", gruv , {})
+vim.api.nvim_create_user_command("Contrast3", high_contrast , {}) --este es horrible
+vim.api.nvim_create_user_command("Contrast4", contrast_git , {}) --este es horrible
+--Contrast
 --Ty--
 vim.api.nvim_create_user_command("Ty", ty_0, {})
 vim.api.nvim_create_user_command("Ty2", ty_1, {})
 vim.api.nvim_create_user_command("Ty3", ty_2, {})
 vim.api.nvim_create_user_command("Ty4", ty_3, {})
 vim.api.nvim_create_user_command("Ty5", ty_5, {})
+vim.api.nvim_create_user_command("Ty6", ty_6, {})
 --Ty--
 --Tranparentes
 vim.api.nvim_create_user_command("Tp", transparent, {})
@@ -463,8 +530,8 @@ vim.api.nvim_create_user_command("Mt", metal3 , {})
 vim.api.nvim_create_user_command("BTom", tom_black , {})
 --Estos son los mejorsitos
 
-vim.api.nvim_create_user_command("Contrast", high_contrast , {})
 vim.api.nvim_create_user_command("Chad", chad , {})
+vim.api.nvim_create_user_command("Emperor", emperor , {})
 
 vim.api.nvim_create_user_command("Black", black, {})
 vim.api.nvim_create_user_command("Black2", black2, {})
