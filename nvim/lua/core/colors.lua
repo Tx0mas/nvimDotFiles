@@ -723,8 +723,9 @@ function transparent_4()
     vim.api.nvim_set_hl(0, "CursorLineNr", { fg = amarillo, bold = true })
     vim.api.nvim_set_hl(0, "Visual", { bg = "#5c5c5c" }) 
     vim.api.nvim_set_hl(0, "Search", { fg = amarillo, bg = negro, reverse = true })
-    vim.api.nvim_set_hl(0, "StatusLine", { fg = negro, bg = barra_blanca })
-    vim.api.nvim_set_hl(0, "StatusLineNC", { fg = gris, bg = barra_blanca })
+
+    vim.api.nvim_set_hl(0, "StatusLine", { fg = blanco, bg = "none" })
+    vim.api.nvim_set_hl(0, "StatusLineNC", { fg = blanco, bg = "none" })
 end
 
 
