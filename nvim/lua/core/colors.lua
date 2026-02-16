@@ -1,4 +1,5 @@
 
+    local chill_rojo     = "#ff8f8f" -- El color de "ERROR AMIGO" y "return"
 --FUNCIONESTHEME
 -- ===== THEMES =====
 
@@ -522,14 +523,224 @@ function transparent_2()
 end
 
 
+function transparent_3()
+    vim.cmd.colorscheme("default")
+    vim.opt.background = "dark"
+
+    local fondo = "none"
+    local amarillo = "#ffe400"
+    local blanco = "#FFFFFF"
+    local verde = "#29da11"
+    local rojo = "#ff0000"
+    local celeste = "#64ecff"
+    local celeste_oscuro = "#004752"
+
+    local gris = "#666666"
+    local negro = "#000000"
+    local subtle_accent = "#999999" -- Para cosas que no quieres que brillen tanto
+
+    local bg_groups = {
+        "Normal", "NormalNC", "NormalFloat", "SignColumn",
+        "LineNr", "EndOfBuffer", "CursorLine", "FoldColumn",
+        "StatusLine", "Pmenu", "FloatBorder"
+    }
+    for _, g in ipairs(bg_groups) do
+        vim.api.nvim_set_hl(0, g, { fg = white, bg = fondo, ctermbg = 0 })
+    end
+
+    local syntax = {
+        ["Keyword"] = { fg = blanco, bold = true },
+        ["Function"] = { fg = amarillo },
+        ["Identifier"] = { fg = celeste },
+        ["Statement"] = { fg = "#ff0000" },
+        ["Type"] = { fg = celeste },
+        ["Operator"] = { fg = blanco },
+        ["String"] = { fg = verde },
+        ["Constant"] = { fg = blanco },
+        ["Number"] = { fg = rojo },
+        ["NonText"] = { fg = "#333333" }, -- Caracteres invisibles
+        ["@variable"] = { fg = celeste},
+        ["@property"] = { fg = celeste },
+        ["@parameter"] = { fg = celeste_oscuro},
+        ["@comment"] = { fg = gris , italic = true },
+
+
+        ["StorageClass"] = { fg = blanco }, -- static, register, volatile, etc.
+        ["Structure"] = { fg = blanco },    -- struct, union, enum
+        ["Typedef"] = { fg = blanco },      -- typedef
+        ["@type"] = { fg = blanco},           -- Clases, structs, tipos en general
+        ["@type.builtin"] = { fg = blanco },   -- int, char, float (primitivos en amarillo)
+        ["@type.definition"] = { fg = blanco }, -- nombres en definiciones de struct
+    }
+
+    for group, settings in pairs(syntax) do
+        vim.api.nvim_set_hl(0, group, settings)
+    end
+        vim.api.nvim_set_hl(0, "CursorLineNr", { fg = blanco, bold = true })
+        vim.api.nvim_set_hl(0, "Visual", { bg = "#333333" }) -- Fondo gris oscuro para selección
+        vim.api.nvim_set_hl(0, "Search", { fg = amarillo, bg = negro }) -- Búsqueda invertida
+end
+
+function dia()
+    vim.cmd("highlight clear")
+    if vim.fn.exists("syntax_on") then
+        vim.cmd("syntax reset")
+    end
+
+    local fondo          = "#474747" 
+    local blanco         = "#FFFFFF" -- Blanco puro para texto, tipos y funciones
+    local amarillo       = "#fff1a3" -- Keywords (if, func, return)
+    local rojo_rosado    = "#ffe924" -- Variables, propiedades y parámetros
+    local chill_rojo     = "#ff8f8f" -- Strings, números y constantes
+    local gris           = "#ababab" -- Comentarios
+    local negro          = "#000000"
+    local barra_blanca   = "#FFFFFF"
+
+    local bg_groups = {
+        "Normal", "NormalNC", "NormalFloat", "SignColumn",
+        "LineNr", "EndOfBuffer", "CursorLine", "FoldColumn",
+        "Pmenu", "FloatBorder"
+    }
+    
+    for _, g in ipairs(bg_groups) do
+        vim.api.nvim_set_hl(0, g, { fg = blanco, bg = fondo })
+    end
+
+    local syntax = {
+        ["Type"]             = { fg = blanco },
+        ["@type"]            = { fg = blanco },
+        ["@type.builtin"]    = { fg = blanco },
+        ["StorageClass"]     = { fg = blanco },
+        ["Structure"]        = { fg = blanco },
+        ["Function"]         = { fg = blanco },
+        ["@function"]        = { fg = blanco },
+        ["@function.call"]   = { fg = blanco },
+        ["@method"]          = { fg = blanco },
+        ["@method.call"]     = { fg = blanco },
+        ["@function.builtin"]= { fg = blanco },
+        ["Operator"]         = { fg = blanco },
+        ["@operator"]        = { fg = blanco },
+        ["Delimiter"]        = { fg = blanco },
+        ["@punctuation.bracket"] = { fg = blanco },
+        ["@punctuation.delimiter"] = { fg = blanco },
+        ["@punctuation.special"]   = { fg = blanco },
+        ["Keyword"]          = { fg = amarillo, bold = true },
+        ["Statement"]        = { fg = amarillo },
+        ["Conditional"]      = { fg = amarillo },
+        ["Repeat"]           = { fg = amarillo },
+        ["PreProc"]          = { fg = amarillo },
+        ["@variable"]        = { fg = rojo_rosado },
+        ["@property"]        = { fg = rojo_rosado },
+        ["@parameter"]       = { fg = rojo_rosado },
+        ["Identifier"]       = { fg = rojo_rosado },
+        ["String"]           = { fg = chill_rojo },
+        ["Constant"]         = { fg = chill_rojo },
+        ["Number"]           = { fg = chill_rojo },
+        ["Boolean"]          = { fg = chill_rojo },
+        ["Float"]            = { fg = chill_rojo },
+        ["Comment"]          = { fg = gris, italic = true },
+        ["@comment"]         = { fg = gris, italic = true },
+    }
+
+    for group, settings in pairs(syntax) do
+        vim.api.nvim_set_hl(0, group, settings)
+    end
+
+    vim.api.nvim_set_hl(0, "CursorLineNr", { fg = amarillo, bold = true })
+    vim.api.nvim_set_hl(0, "Visual", { bg = "#5c5c5c" }) 
+    vim.api.nvim_set_hl(0, "Search", { fg = amarillo, bg = negro, reverse = true })
+    vim.api.nvim_set_hl(0, "StatusLine", { fg = negro, bg = barra_blanca })
+    vim.api.nvim_set_hl(0, "StatusLineNC", { fg = gris, bg = barra_blanca })
+end
+
+
+
+function transparent_4()
+    vim.cmd("highlight clear")
+    if vim.fn.exists("syntax_on") then
+        vim.cmd("syntax reset")
+    end
+
+    local fondo          = "none" 
+    local blanco         = "#FFFFFF" -- Blanco puro para texto, tipos y funciones
+    local amarillo       = "#fff1a3" -- Keywords (if, func, return)
+    local rojo_rosado    = "#ffe924" -- Variables, propiedades y parámetros
+    local chill_rojo     = "#ff8f8f" -- Strings, números y constantes
+    local gris           = "#ababab" -- Comentarios
+    local negro          = "#000000"
+    local barra_blanca   = "#FFFFFF"
+
+    local bg_groups = {
+        "Normal", "NormalNC", "NormalFloat", "SignColumn",
+        "LineNr", "EndOfBuffer", "CursorLine", "FoldColumn",
+        "Pmenu", "FloatBorder"
+    }
+    
+    for _, g in ipairs(bg_groups) do
+        vim.api.nvim_set_hl(0, g, { fg = blanco, bg = fondo })
+    end
+
+    local syntax = {
+        ["Type"]             = { fg = blanco },
+        ["@type"]            = { fg = blanco },
+        ["@type.builtin"]    = { fg = blanco },
+        ["StorageClass"]     = { fg = blanco },
+        ["Structure"]        = { fg = blanco },
+        ["Function"]         = { fg = blanco },
+        ["@function"]        = { fg = blanco },
+        ["@function.call"]   = { fg = blanco },
+        ["@method"]          = { fg = blanco },
+        ["@method.call"]     = { fg = blanco },
+        ["@function.builtin"]= { fg = blanco },
+        ["Operator"]         = { fg = blanco },
+        ["@operator"]        = { fg = blanco },
+        ["Delimiter"]        = { fg = blanco },
+        ["@punctuation.bracket"] = { fg = blanco },
+        ["@punctuation.delimiter"] = { fg = blanco },
+        ["@punctuation.special"]   = { fg = blanco },
+        ["Keyword"]          = { fg = amarillo, bold = true },
+        ["Statement"]        = { fg = amarillo },
+        ["Conditional"]      = { fg = amarillo },
+        ["Repeat"]           = { fg = amarillo },
+        ["PreProc"]          = { fg = amarillo },
+        ["@variable"]        = { fg = rojo_rosado },
+        ["@property"]        = { fg = rojo_rosado },
+        ["@parameter"]       = { fg = rojo_rosado },
+        ["Identifier"]       = { fg = rojo_rosado },
+        ["String"]           = { fg = chill_rojo },
+        ["Constant"]         = { fg = chill_rojo },
+        ["Number"]           = { fg = chill_rojo },
+        ["Boolean"]          = { fg = chill_rojo },
+        ["Float"]            = { fg = chill_rojo },
+        ["Comment"]          = { fg = gris, italic = true },
+        ["@comment"]         = { fg = gris, italic = true },
+    }
+
+    for group, settings in pairs(syntax) do
+        vim.api.nvim_set_hl(0, group, settings)
+    end
+
+    vim.api.nvim_set_hl(0, "CursorLineNr", { fg = amarillo, bold = true })
+    vim.api.nvim_set_hl(0, "Visual", { bg = "#5c5c5c" }) 
+    vim.api.nvim_set_hl(0, "Search", { fg = amarillo, bg = negro, reverse = true })
+    vim.api.nvim_set_hl(0, "StatusLine", { fg = negro, bg = barra_blanca })
+    vim.api.nvim_set_hl(0, "StatusLineNC", { fg = gris, bg = barra_blanca })
+end
+
+
 --ACCESOS RAPIDOS--
 --ACCESOS RAPIDOS--
+vim.api.nvim_create_user_command("Focus", tom , {}) 
+vim.api.nvim_create_user_command("Dia", dia , {}) 
+vim.api.nvim_create_user_command("Tarde", dia , {}) 
+vim.api.nvim_create_user_command("Noche", transparent_4 , {}) 
 -- nadie: el codigo de pirate software:
 --Main-- (INTENTA MANTENERLO EN 3 MAX NOMAS PORFAVOR TOMAS DEL FUTURO)
 vim.api.nvim_create_user_command("Main0", tom , {}) 
 vim.api.nvim_create_user_command("Main", contrast_git , {})
 vim.api.nvim_create_user_command("Main2", ty_6 , {})
 vim.api.nvim_create_user_command("Main3", tom5 , {})
+vim.api.nvim_create_user_command("Main4", dia , {}) 
 --Mains--
 vim.api.nvim_create_user_command("Tom", tom , {})
 vim.api.nvim_create_user_command("Tom2", transparent, {})
@@ -558,6 +769,8 @@ vim.api.nvim_create_user_command("Ty6", ty_6, {})
 --Tranparentes
 vim.api.nvim_create_user_command("Tp", transparent, {})
 vim.api.nvim_create_user_command("Tp2", transparent_2, {})
+vim.api.nvim_create_user_command("Tp3", transparent_3 , {}) 
+vim.api.nvim_create_user_command("Tp4", transparent_4 , {}) 
 vim.api.nvim_create_user_command("BTp", BlackTp , {})
 --Estos son los mejorsitos
 vim.api.nvim_create_user_command("Gr", gruber , {})
