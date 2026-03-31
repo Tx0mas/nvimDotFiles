@@ -74,7 +74,12 @@ return
           desc = "Search Buffers",
         })
 
-        vim.keymap.set('n', '<leader>gr', require('telescope.builtin').lsp_references, { desc = 'Telescope: Ver referencias' })
-
+        -- vim.keymap.set('n', '<leader>gr', require('telescope.builtin').lsp_references, { desc = 'Telescope: Ver referencias' })
+        vim.keymap.set('n', '<leader>gr', function()
+            require('telescope.builtin').lsp_references(require('telescope.themes').get_dropdown({
+                layout_config = { mirror = false },
+                previewer = true,
+            }))
+        end, { desc = 'Telescope: Ver referencias con preview' })
         end
     }

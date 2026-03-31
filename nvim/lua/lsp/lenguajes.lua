@@ -18,13 +18,14 @@ require("mason-lspconfig").setup({
         "lua_ls",    -- Lua
         "pyright",   -- Python
         "tinymist",  -- Typst
-        "gopls"      -- Go
+        "gopls",      -- Go
+        "rust_analyzer"
     },
 })
-
 -- 3. Habilitar los servicios (Tu configuración original + Go)
 vim.lsp.enable("clangd")
 vim.lsp.enable("lua_ls")
 vim.lsp.enable("pyright")
 vim.lsp.enable("tinymist")
 vim.lsp.enable("gopls")
+vim.lsp.enable("rust_analyzer")
